@@ -16,7 +16,53 @@
 
 ![common_dialog.gif](http://upload-images.jianshu.io/upload_images/1848340-bfd6d41eb4be08cf.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+# 调用
 
+```
+//通用弹框 生产类
+public class DialogCreator {
+    /**
+     * 无标题,单btn弹窗
+     *
+     * @param mActivity
+     * @param msg
+     * @param strLeft
+     * @param leftListener
+     */
+    public static BaseDialog showConfirmDialog(Context mActivity, String msg, String strLeft, OnLeftListener leftListener) {
+        CommonNormalDialog confrimDialog = new CommonNormalDialog(mActivity);
+        confrimDialog.setDialogType(DialogConfig.TYPE_HAS_NO_HEADER)
+                .setContent(msg)
+                .setContentGravity(DialogConfig.TYPE_GRIVITY_CENTER)
+                .setConfirmBtn(strLeft, leftListener)
+                .start();
+        return confrimDialog;
+    }
+
+
+
+    /**
+     * 无标题,单btn弹窗
+     *
+     * @param mActivity
+     * @param msg
+     * @param strLeft
+     * @param leftListener
+     */
+    public static BaseDialog showTitleConfirmDialog(Context mActivity, String title, String msg, String strLeft, OnLeftListener leftListener) {
+        CommonNormalDialog confrimDialog = new CommonNormalDialog(mActivity);
+        confrimDialog.setDialogType(DialogConfig.TYPE_HAS_HEADER)
+                .setTitle(title)
+                .setContent(msg)
+                .setContentGravity(DialogConfig.TYPE_GRIVITY_CENTER)
+                .setConfirmBtn(strLeft, leftListener)
+                .start();
+        return confrimDialog;
+    }
+....
+}
+
+```
 
 # 思路
 

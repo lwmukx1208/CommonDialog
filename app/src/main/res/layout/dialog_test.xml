@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/show_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认弹窗" />
+    <Button
+        android:id="@+id/show_2btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="不带标题+两按钮" />
+
+    <Button
+        android:id="@+id/show_title_2btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="带标题+两按钮" />
+
+
+
+    <Button
+        android:id="@+id/show_edit_title_1btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="带编辑框+标题+一按钮" />
+
+    <Button
+        android:id="@+id/show_image_header_1btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="带图片头部背景" />
+
+    <Button
+        android:id="@+id/show_logo_header_1btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="带logo图片头弹窗" />
+
+    <Button
+        android:id="@+id/show_card_2btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="展示商品卡的dialog" />
+</LinearLayout>

@@ -12,6 +12,18 @@
 这就是要 造这个了轮子的初衷.
 
 
+
+项目目前,有点粗糙,没有做精简优化,如果想引用,可以直接download然后,作为lib应用. 
+
+后期,我会随着项目迭代,进行优化.
+
+
+
+
+项目地址
+
+[通用对话弹窗CommonDialog项目地址...](https://github.com/ccj659/CommonDialog)
+
 # 效果图
 
 ![common_dialog.gif](http://upload-images.jianshu.io/upload_images/1848340-bfd6d41eb4be08cf.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)

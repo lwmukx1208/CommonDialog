@@ -17,6 +17,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 
 public class DialogTestActivity extends AppCompatActivity implements View.OnClickListener {
 
+
     String url = "https://w4.hoopchina.com.cn/46/cb/04/46cb04b0cbfa425d0281b5a5dbf77d5a002.png";
 
     Button show_confirm, show_2btn, show_title_2btn, show_edit_title_1btn, show_image_header_1btn, show_logo_header_1btn, show_card_2btn;

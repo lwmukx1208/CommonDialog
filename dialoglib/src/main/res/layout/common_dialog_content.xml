@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/ll_dialog_container"
+        android:background="@drawable/common_dialog_content_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_below="@+id/iv_header"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:minHeight="30dp"
+                android:layout_gravity="center"
+                android:text="这是个标题"
+                android:textColor="#444444"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:lineSpacingExtra="7dp"
+                android:minHeight="30dp"
+                android:text="是否确认取消提醒?"
+                android:textColor="#444444"
+                android:textSize="14dp" />
+
+            <EditText
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/common_dialog_edit_bg"
+                android:layout_marginTop="20dp"
+                android:id="@+id/etv_content"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:hint="请输入系列标题"
+                android:textColorHint="#999999"
+                android:textColor="#444444"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/iv_content_cancel"
+        android:src="@drawable/common_dialog_cancel"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
+        android:layout_alignTop="@+id/ll_dialog_container"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

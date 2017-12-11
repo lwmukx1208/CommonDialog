@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/ll_dialog_container"
+        android:background="@drawable/common_dialog_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_below="@+id/iv_header"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:minHeight="30dp"
+                android:layout_gravity="center"
+                android:text="这是个标题"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/color444"
+                android:textSize="16sp" />
+
+
+            <include
+                layout="@layout/item_dialog_haojia_base" />
+
+        </LinearLayout>
+
+
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_below="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorddd"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_footer"
+            android:layout_below="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="是"
+                android:textColor="@color/color666"
+                android:textSize="@dimen/dialog_subtitlesize" />
+
+            <View
+                android:id="@+id/v_vertical_line"
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/colorddd"/>
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="否"
+                android:textColor="@color/color666"
+                android:textSize="@dimen/dialog_subtitlesize" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/iv_content_cancel"
+        android:src="@drawable/common_dialog_cancel"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
+        android:layout_alignTop="@+id/ll_dialog_container"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

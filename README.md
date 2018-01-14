@@ -6,7 +6,6 @@ Version 1.0
 
 Created by chenchangjun on 18/1/12.
 
-- 上传到jCenter代码库
 - **抽离普通基类**见`BaseNormalDialog`
 - **优化扩展方式** 见`3.1 基本扩展`
 - 添加必要注释
@@ -400,4 +399,4 @@ public class CommonImgHeaderDialog extends CommonNormalDialog implements View.On
 
 2.兼容更多的样式处理
 
-3.etc......
+3.精简lib中依赖的处理第三方库......

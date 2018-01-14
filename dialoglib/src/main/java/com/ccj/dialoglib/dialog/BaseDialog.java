@@ -14,7 +14,7 @@ import com.ccj.dialoglib.R;
 
 /**
  * 装饰者模式 装饰 AlertDialog 抽象模板类
- *
+ * <p>
  * Created by chenchangjun on 17/10/11.
  */
 
@@ -28,6 +28,7 @@ public abstract class BaseDialog {
     public AlertDialog getDialog() {
         return dialog;
     }
+
     private Window window;
     private AlertDialog dialog;//基于AlertDialog真正显示在界面上的Dialog
 
@@ -61,7 +62,7 @@ public abstract class BaseDialog {
                         WindowManager.LayoutParams.SOFT_INPUT_MASK_STATE);
 
         //设置Material Design风格的背景
-         window = dialog.getWindow();
+        window = dialog.getWindow();
         View rootView = LayoutInflater.from(context).inflate(R.layout.common_dialog_base, null, false);
         window.setContentView(rootView);
 
@@ -116,21 +117,32 @@ public abstract class BaseDialog {
     protected abstract View initBottom();
 
 
+    /** **********************模板方法*********************/
     /**
-     * 模板方法
+     * 加载头部数据
      */
     protected abstract void loadHeader();
 
+    /**
+     * 加载内容区数据
+     */
     protected abstract void loadContent();
 
+    /**
+     * 加载底部数据
+     */
     protected abstract void loadBottom();
 
-
-    public   void start(){
+    /**
+     * 开始加载数据
+     */
+    public void start() {
         loadHeader();
         loadContent();
         loadBottom();
-    };
+    }
+
+    ;
 
     //===Desc:提供给外界使用的方法==========================================================================================
 
@@ -144,9 +156,6 @@ public abstract class BaseDialog {
         dialog.setCancelable(flag);
         return this;
     }
-
-
-
 
 
     /**
@@ -183,7 +192,6 @@ public abstract class BaseDialog {
     public void setOnDialogDismissListener(DialogInterface.OnDismissListener listener) {
         dialog.setOnDismissListener(listener);
     }
-
 
 
 }

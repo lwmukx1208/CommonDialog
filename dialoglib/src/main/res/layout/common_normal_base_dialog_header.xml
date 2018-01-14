@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_dialog_header_bg"
+    android:orientation="vertical">
+
+
+
+    <!--   <ImageView
+           android:id="@+id/iv_header"
+           android:background="@drawable/common_dialog_bg"
+           android:layout_width="match_parent"
+           android:layout_height="80dp" />-->
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"
+        android:minHeight="30dp"
+        android:layout_gravity="center"
+        android:text="这是个标题"
+        android:textColor="@color/color444"
+        android:textSize="16sp" />
+
+
+    <ImageView
+        android:id="@+id/iv_header_cancel"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/common_dialog_cancel"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:padding="5dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>

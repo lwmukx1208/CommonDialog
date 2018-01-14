@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.ccj.dialog.dialogImp.MyDialogDialog;
 import com.ccj.dialoglib.DialogCreator;
 import com.ccj.dialoglib.listener.OnLeftListener;
 import com.ccj.dialoglib.listener.OnRightListener;
@@ -20,7 +22,7 @@ public class DialogTestActivity extends AppCompatActivity implements View.OnClic
 
     String url = "https://w4.hoopchina.com.cn/46/cb/04/46cb04b0cbfa425d0281b5a5dbf77d5a002.png";
 
-    Button show_confirm, show_2btn, show_title_2btn, show_edit_title_1btn, show_image_header_1btn, show_logo_header_1btn, show_card_2btn;
+    Button show_confirm, show_2btn, show_title_2btn, show_edit_title_1btn, show_image_header_1btn, show_logo_header_1btn, show_card_2btn,show_my_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class DialogTestActivity extends AppCompatActivity implements View.OnClic
         show_logo_header_1btn = (Button) findViewById(R.id.show_logo_header_1btn);
         show_card_2btn = (Button) findViewById(R.id.show_card_2btn);
 
+        show_my_btn= (Button) findViewById(R.id.show_my_btn);
+
+
         show_confirm.setOnClickListener(this);
         show_2btn.setOnClickListener(this);
         show_title_2btn.setOnClickListener(this);
@@ -44,7 +49,7 @@ public class DialogTestActivity extends AppCompatActivity implements View.OnClic
         show_logo_header_1btn.setOnClickListener(this);
         show_card_2btn.setOnClickListener(this);
 
-
+        show_my_btn.setOnClickListener(this);
     }
 
     @Override
@@ -147,7 +152,32 @@ public class DialogTestActivity extends AppCompatActivity implements View.OnClic
                 }).show();
 
                 break;
+            case R.id.show_my_btn:
+                MyDialogDialog myDialogDialog=new MyDialogDialog(this);
+                myDialogDialog
+                        .setMyView("My View")
+                        .setDialogCancelable(true)
+                        .setTitle("我的title")
+                        /*.setConfirmBtn("点击我的view", new OnLeftListener() {
+                            @Override
+                            public void onLeftClick(String str) {
+                                Toast.makeText(DialogTestActivity.this,"点击了我的view setConfirmBtn",Toast.LENGTH_SHORT).show();
 
+                            }
+                        })*/.setRightBtn("lala", new OnRightListener() {
+                    @Override
+                    public void onRightClick(String str) {
+                        Toast.makeText(DialogTestActivity.this,"lala",Toast.LENGTH_SHORT).show();
+
+                    }
+                })
+                .start();
+
+                myDialogDialog.show();
+
+
+
+                break;
 
             default:
                 break;

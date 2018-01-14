@@ -1,6 +1,23 @@
 # 通用对话弹窗CommonDialog
 
 
+
+Version 1.0
+
+Created by chenchangjun on 18/1/12.
+
+- 上传到jCenter代码库
+- **抽离普通基类**见`BaseNormalDialog`
+- **优化扩展方式** 见`3.1 基本扩展`
+- 添加必要注释
+
+![image.png](http://upload-images.jianshu.io/upload_images/1848340-613f84ab068ddb1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+------------------------
+---------------------------------------
+
+
 项目中,迭代了快8年了,对话框,种类繁多, 难以维护, 有的继承`popwindow`, 有的继承`dialog`, 有的继承`dialogFragment`....而且写法 各不相同.
 
 
@@ -189,6 +206,125 @@ public class DialogCreator {
 
 ### 3.扩展
 
+
+#### 3.1 普通扩展
+
+如果想要 用如下的 弹窗样式. 那么只需要简单几步就可以实现.
+
+![image.png](http://upload-images.jianshu.io/upload_images/1848340-613f84ab068ddb1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+##### 3.1.1 学习并继承 `NormalBaseDialog`,并实现其中的三个抽象方法 即可.
+
+```
+
+    /*************************构造子类的内容布局***********************/
+
+
+    /**
+     * 构造 实现类 内容布局
+     * @return
+     */
+    public abstract View createContentView();
+
+
+    /**
+     * 处理 实现类的 view数据
+     * @param parents view 的ViewGroup容器
+     * @param v view本身
+     */
+    public abstract void handleContentView(ViewGroup parents, View v);
+
+    /**
+     * 子类view 监听器
+     * @param v  事件分发 view
+     */
+    public abstract void onContentClick(View v);
+
+
+```
+
+##### 3.1.2 举例说明 在app module中, 有`MyDialogDialog` ,清爽的代码~  .
+
+```
+
+
+/**
+ * 自定义样式
+ * Created by chenchangjun on 17/10/11.
+ */
+
+public class MyDialogDialog extends NormalBaseDialog implements View.OnClickListener {
+
+
+    private ImageView card_pic;
+    private TextView card_price;
+    private TextView card_title;
+
+    /**
+     * 构造 实现类 内容布局
+     *
+     * @return
+     */
+    @Override
+    public View createContentView() {
+        View myView = View.inflate(context, R.layout.dialog_content_focus_dialog_v1, null);
+
+
+        card_pic= (ImageView) myView.findViewById(R.id.card_pic);
+
+        card_price= (TextView) myView.findViewById(R.id.card_price);
+        card_title= (TextView) myView.findViewById(R.id.card_title);
+        card_pic.setOnClickListener(this);
+        return myView;
+    }
+
+    /**
+     * 处理 实现类的 view数据
+     *
+     * @param parents view 的ViewGroup容器
+     * @param v       view本身
+     */
+    @Override
+    public void handleContentView(ViewGroup parents, View v) {
+        card_pic.setImageResource(R.mipmap.ic_launcher_round);
+
+    }
+
+    /**
+     * 子类view 监听器
+     *
+     * @param v 事件分发 view
+     */
+    @Override
+    public void onContentClick(View v) {
+
+        int i = v.getId();
+        if (i == R.id.card_pic) {
+            Toast.makeText(context,"hello MyDialog!!!!",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+    public MyDialogDialog setMyView(String st) {
+        card_title.setText(st);
+        return this;
+    }
+
+    public MyDialogDialog(Context context) {
+        super(context);
+    }
+
+}
+
+
+
+```
+
+
+#### 3.2 其他扩展
+
 如果想要扩展, 根据需求相互扩展即可.
 
  比如 `CommonImgHeaderDialog` 可以选择继承`CommonNormalDialog`.共用`CommonNormalDialog`的 内容布局和 底部布局. 所以,只需要加载header布局即可.
@@ -257,3 +393,11 @@ public class CommonImgHeaderDialog extends CommonNormalDialog implements View.On
 ```
 
 
+### 4. 后期优化
+
+
+1.优化为一个组件库 发布到 JCenter来使用
+
+2.兼容更多的样式处理
+
+3.etc......

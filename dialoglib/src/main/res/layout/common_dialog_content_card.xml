@@ -43,7 +43,7 @@
 
 
             <include
-                layout="@layout/item_dialog_haojia_base" />
+                layout="@layout/item_dialog_card_base" />
 
         </LinearLayout>
 

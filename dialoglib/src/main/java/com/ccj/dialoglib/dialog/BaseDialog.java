@@ -13,8 +13,7 @@ import com.ccj.dialoglib.R;
 
 
 /**
- * 装饰者模式 装饰 AlertDialog 抽象模板类
- * <p>
+ * 装饰者模式 装饰 AlertDialog
  * Created by chenchangjun on 17/10/11.
  */
 
@@ -28,7 +27,6 @@ public abstract class BaseDialog {
     public AlertDialog getDialog() {
         return dialog;
     }
-
     private Window window;
     private AlertDialog dialog;//基于AlertDialog真正显示在界面上的Dialog
 
@@ -51,7 +49,8 @@ public abstract class BaseDialog {
     private void initView() {
         //显示Dialog
         dialog = new AlertDialog.Builder(context, R.style.common_dialog).create();
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
         dialog.show();
         dialog.getWindow()
                 .clearFlags(
@@ -62,7 +61,7 @@ public abstract class BaseDialog {
                         WindowManager.LayoutParams.SOFT_INPUT_MASK_STATE);
 
         //设置Material Design风格的背景
-        window = dialog.getWindow();
+         window = dialog.getWindow();
         View rootView = LayoutInflater.from(context).inflate(R.layout.common_dialog_base, null, false);
         window.setContentView(rootView);
 
@@ -117,32 +116,24 @@ public abstract class BaseDialog {
     protected abstract View initBottom();
 
 
-    /** **********************模板方法*********************/
     /**
-     * 加载头部数据
+     * 模板方法
      */
     protected abstract void loadHeader();
 
-    /**
-     * 加载内容区数据
-     */
     protected abstract void loadContent();
 
-    /**
-     * 加载底部数据
-     */
     protected abstract void loadBottom();
 
     /**
-     * 开始加载数据
+     * 加載完數據, 並且彈窗
      */
-    public void start() {
+    public   void start(){
         loadHeader();
         loadContent();
         loadBottom();
+        //show();
     }
-
-    ;
 
     //===Desc:提供给外界使用的方法==========================================================================================
 
@@ -156,6 +147,9 @@ public abstract class BaseDialog {
         dialog.setCancelable(flag);
         return this;
     }
+
+
+
 
 
     /**
@@ -175,6 +169,16 @@ public abstract class BaseDialog {
         }
     }
 
+
+    /**
+     * 关闭当前的Dialog
+     */
+    public void cancel() {
+        if (dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
+
     /**
      * 当前Dialog是否在显示
      *
@@ -189,8 +193,18 @@ public abstract class BaseDialog {
      *
      * @param listener OnDialogDismissListener回调监听
      */
-    public void setOnDialogDismissListener(DialogInterface.OnDismissListener listener) {
+    protected void setOnDialogDismissListener(DialogInterface.OnDismissListener listener) {
         dialog.setOnDismissListener(listener);
+    }
+
+
+    /**
+     * 给当前Dialog设置关闭之后的回调监听
+     *
+     * @param listener OnDialogDismissListener回调监听
+     */
+    protected void setOnDialogCancelListener(DialogInterface.OnCancelListener listener) {
+        dialog.setOnCancelListener(listener);
     }
 
 

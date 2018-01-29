@@ -1,6 +1,7 @@
 package com.ccj.dialoglib.dialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
@@ -9,11 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ccj.dialoglib.R;
+import com.ccj.dialoglib.listener.OnCancelListener;
 import com.ccj.dialoglib.listener.OnLeftListener;
 import com.ccj.dialoglib.listener.OnRightListener;
 
+
 /**
- *
  * 普通dialog的基类
  * Created by chenchangjun on 18/1/12.
  */
@@ -38,6 +40,7 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
     protected OnLeftListener onLeftListener; //多用于确认按钮;也可用于只有一个button的时候,
     protected OnRightListener onRightListener;//多用于取消
 
+    protected OnCancelListener onCancelListener;//弹窗取消
 
     /**
      * 加载通用头部,包括title 和 cancel 按钮
@@ -87,6 +90,7 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
 
     /**
      * 构造 实现类 内容布局
+     *
      * @return
      */
     public abstract View createContentView();
@@ -94,14 +98,16 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
 
     /**
      * 处理 实现类的 view数据
+     *
      * @param parents view 的ViewGroup容器
-     * @param v view本身
+     * @param v       view本身
      */
     public abstract void handleContentView(ViewGroup parents, View v);
 
     /**
      * 子类view 监听器
-     * @param v  事件分发 view
+     *
+     * @param v 事件分发 view
      */
     public abstract void onContentClick(View v);
 
@@ -116,9 +122,11 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
             dismiss();
 
         } else if (i == R.id.iv_header_cancel) {
-            dismiss();
-
-        }else {
+            cancel();
+            if (onCancelListener != null) {
+                onCancelListener.onCancel();
+            }
+        } else {
             onContentClick(v);
         }
     }
@@ -131,6 +139,7 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
 
     /**
      * 初始化 头部布局
+     *
      * @return
      */
     @Override
@@ -146,6 +155,7 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
 
     /**
      * 初始化 内容区
+     *
      * @return
      */
     @Override
@@ -164,6 +174,7 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
 
     /**
      * 初始化 底部
+     *
      * @return
      */
     @Override
@@ -176,7 +187,8 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
 
         return footer;
     }
-/***********************set 区域************************/
+
+    /***********************set 区域************************/
 
     public BaseNormalDialog setTitle(String str) {
         title = str;
@@ -209,10 +221,25 @@ public abstract class BaseNormalDialog extends BaseDialog implements View.OnClic
         }
 
 
-
         return this;
     }
 
+
+    /**
+     * 给当前Dialog设置关闭之后的回调监听,和ondissmiss不同
+     *
+     * @param listener OnCancelListener
+     */
+    public BaseNormalDialog setOnCancelListener(DialogInterface.OnCancelListener listener) {
+        super.setOnDialogCancelListener(listener);
+        return this;
+    }
+
+
+    public BaseNormalDialog setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
+        getDialog().setOnDismissListener(onDismissListener);
+        return this;
+    }
 
     public BaseNormalDialog setRightBtn(String str, OnRightListener onRightListener) {
         strRight = str;

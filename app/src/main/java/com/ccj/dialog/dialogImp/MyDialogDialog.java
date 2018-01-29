@@ -30,7 +30,7 @@ public class MyDialogDialog extends BaseNormalDialog implements View.OnClickList
      */
     @Override
     public View createContentView() {
-        View myView = View.inflate(context, R.layout.dialog_content_focus_dialog_v1, null);
+        View myView = View.inflate(context, R.layout.dialog_my_dialog, null);
 
 
         card_pic= (ImageView) myView.findViewById(R.id.card_pic);

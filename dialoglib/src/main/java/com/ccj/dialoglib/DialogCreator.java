@@ -3,10 +3,10 @@ package com.ccj.dialoglib;
 import android.content.Context;
 
 import com.ccj.dialoglib.dialog.BaseDialog;
-import com.ccj.dialoglib.dialog.CommonCardDialog;
-import com.ccj.dialoglib.dialog.CommonImgHeaderDialog;
-import com.ccj.dialoglib.dialog.CommonLogoHeaderDialog;
-import com.ccj.dialoglib.dialog.CommonNormalDialog;
+import com.ccj.dialoglib.dialog.imp.CommonCardDialog;
+import com.ccj.dialoglib.dialog.imp.CommonImgHeaderDialog;
+import com.ccj.dialoglib.dialog.imp.CommonLogoHeaderDialog;
+import com.ccj.dialoglib.dialog.imp.CommonNormalDialog;
 import com.ccj.dialoglib.listener.OnLeftListener;
 import com.ccj.dialoglib.listener.OnRightListener;
 

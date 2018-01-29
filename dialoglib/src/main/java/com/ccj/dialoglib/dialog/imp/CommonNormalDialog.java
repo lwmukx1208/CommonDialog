@@ -1,4 +1,4 @@
-package com.ccj.dialoglib.dialog;
+package com.ccj.dialoglib.dialog.imp;
 
 import android.content.Context;
 import android.text.Html;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ccj.dialoglib.R;
+import com.ccj.dialoglib.dialog.BaseDialog;
 import com.ccj.dialoglib.listener.OnLeftListener;
 import com.ccj.dialoglib.listener.OnRightListener;
 

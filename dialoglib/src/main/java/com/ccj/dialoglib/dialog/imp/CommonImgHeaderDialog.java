@@ -1,4 +1,4 @@
-package com.ccj.dialoglib.dialog;
+package com.ccj.dialoglib.dialog.imp;
 
 import android.content.Context;
 import android.net.Uri;
